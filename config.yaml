@@ -1,0 +1,148 @@
+demo_yield: &demo_yield
+  data_root: /path/to/daycent/data
+  task: yield
+  dataset_type: synthetic_old_format
+
+  data:
+    use_synthetic: true
+    point_sort: numeric
+    validate_monthly_files: true
+    weather_columns: [Tmax, Tmin, Precip]
+    management_events:
+      - conventional_till_molboadplow
+      - corn_planting
+      - cycle_end
+      - harvest_grain
+      - herbicide
+      - nitrogen_fertilization_0gNm2
+      - nitrogen_fertilization_1.5gNm2
+      - nitrogen_fertilization_10.312gNm2
+      - nitrogen_fertilization_17.74gNm2
+      - notill_rodweederrow
+      - reduced_till_tandemdisk
+      - ryegrass_planting
+      - soybean_planting
+      - winterwheat_planting
+
+  splits:
+    train:
+      scenarios: [3, 4, 12]
+      point_slice: {start: 0, end: 24}
+      year_range: {start: 2002, end: 2020}
+    valid:
+      scenarios: [14]
+      point_slice: {start: 24, end: 32}
+      year_range: {start: 2021, end: 2022}
+    test:
+      scenarios: [18]
+      point_slice: {start: 32, end: 40}
+      years: [2023]
+
+  normalization:
+    fit_split: train
+    min_std: 1.0e-6
+
+  local_batch_size: 32
+  num_data_workers: 0
+  shuffle: true
+
+
+model_yield: &model_yield
+  data_root: /path/to/daycent/data
+  task: yield
+  dataset_type: synthetic_old_format
+
+  data:
+    use_synthetic: true
+    point_sort: numeric
+    validate_monthly_files: true
+    weather_columns: [Tmax, Tmin, Precip]
+    management_events:
+      - conventional_till_molboadplow
+      - corn_planting
+      - cycle_end
+      - harvest_grain
+      - herbicide
+      - nitrogen_fertilization_0gNm2
+      - nitrogen_fertilization_1.5gNm2
+      - nitrogen_fertilization_10.312gNm2
+      - nitrogen_fertilization_17.74gNm2
+      - notill_rodweederrow
+      - reduced_till_tandemdisk
+      - ryegrass_planting
+      - soybean_planting
+      - winterwheat_planting
+
+  splits:
+    train:
+      scenarios: [3, 4, 10, 12, 14, 16, 18, 20, 22, 26, 30, 35, 40, 42, 51]
+      point_slice: {start: 0, end: 60}
+      year_range: {start: 2002, end: 2020}
+    valid:
+      scenarios: [100, 107, 119]
+      point_slice: {start: 60, end: 85}
+      year_range: {start: 2021, end: 2022}
+    test:
+      scenarios: [123, 134, 143]
+      point_slice: {start: 85, end: 100}
+      years: [2023]
+
+  normalization:
+    fit_split: train
+    min_std: 1.0e-6
+
+  local_batch_size: 32
+  num_data_workers: 0
+  shuffle: true
+
+
+model_somsc: &model_somsc
+  data_root: /path/to/daycent/data
+  task: SOMSC
+  dataset_type: synthetic_old_format
+
+  data:
+    use_synthetic: true
+    point_sort: numeric
+    validate_monthly_files: true
+    weather_columns: [Tmax, Tmin, Precip]
+    management_events:
+      - conventional_till_molboadplow
+      - corn_planting
+      - cycle_end
+      - harvest_grain
+      - herbicide
+      - nitrogen_fertilization_0gNm2
+      - nitrogen_fertilization_1.5gNm2
+      - nitrogen_fertilization_10.312gNm2
+      - nitrogen_fertilization_17.74gNm2
+      - notill_rodweederrow
+      - reduced_till_tandemdisk
+      - ryegrass_planting
+      - soybean_planting
+      - winterwheat_planting
+
+  splits:
+    train:
+      scenarios: [3, 4, 10, 12, 14, 16, 18, 20, 22, 26, 30, 35, 40, 42, 51]
+      point_slice: {start: 0, end: 10}
+      year_range: {start: 2002, end: 2020}
+      month_range: {start: 1, end: 12}
+    valid:
+      scenarios: [100, 107, 119]
+      point_slice: {start: 10, end: 15}
+      year_range: {start: 2021, end: 2022}
+      month_range: {start: 1, end: 12}
+    test:
+      scenarios: [123, 134, 143]
+      point_slice: {start: 15, end: 20}
+      years: [2023]
+      month_range: {start: 1, end: 12}
+
+  normalization:
+    fit_split: train
+    min_std: 1.0e-6
+
+  local_batch_size: 32
+  num_data_workers: 0
+  shuffle: true
