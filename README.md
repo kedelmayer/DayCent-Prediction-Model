@@ -9,7 +9,8 @@ An agricultural time series forecasting model implementing the LSTM architecture
 - **PyTorch integration**: Native `Dataset` and `DataLoader` support.
 - **Leakage-safe normalization**: Weather, static variables, and yield are normalized from the train split only.
 - **Deterministic demo subset**: Small fixed scenarios, points, and years for quick first runs.
-- **Visualization examples**: Plot daily weather, management events, and yield/SOMSC distribution.
+- **Split and Sample visualizations**: Plot daily weather, management events, and yield/SOMSC distribution.
+- **Validation and Test Prediction visualizations**: Plot training/validation for each epoch and test evaluation (model predictions vs. actual data) to show model performance.
 
 ## Repository Structure
 
