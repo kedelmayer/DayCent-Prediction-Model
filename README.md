@@ -49,7 +49,7 @@ data_root: /path/to/daycent/data/SAS_KGML_090925
 Set up a Python environment and install dependencies from `requirements.txt`:
 
 ```bash
-cd ~/daycent_model                  # Navigate to daycent_model
+cd ~/DayCent_Prediction_Model                  # Navigate to DayCent_Prediction_Model
 python3 -m venv .venv
 .venv\Scripts\activate.ps1
 # For Linux, use:  source .venv/bin/activate
